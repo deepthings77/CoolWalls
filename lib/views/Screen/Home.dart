@@ -8,6 +8,7 @@ import 'package:my_new/model/categoryModel.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/catBlock.dart';
+import 'package:my_new/views/widgets/searchBar.dart';
 
 
 
@@ -64,9 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body:  isLoading ? Center(child:  CircularProgressIndicator(),) :  SingleChildScrollView(
         child: Column(
           children: [
+            
             Container(
                 padding: const  EdgeInsets.symmetric(horizontal: 10),
-                child: const SearchBar()),
+                child:  Search_Bar()),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20),
               child: SizedBox(

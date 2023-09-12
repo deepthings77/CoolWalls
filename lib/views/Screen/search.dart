@@ -5,6 +5,7 @@ import 'package:my_new/controller/apiOper.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
+import 'package:my_new/views/widgets/searchBar.dart';
 
 
 class SearchScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
-                child: SearchBar()),
+                child: Search_Bar()),
             SizedBox(
               height: 10,
             ),
