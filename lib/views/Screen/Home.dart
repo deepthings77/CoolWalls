@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
 import 'package:my_new/controller/apiOper.dart';
@@ -9,9 +6,6 @@ import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/catBlock.dart';
 import 'package:my_new/views/widgets/searchBar.dart';
-
-
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -62,78 +56,85 @@ class _HomeScreenState extends State<HomeScreen> {
           word2: "Walls",
         ),
       ),
-      body:  isLoading ? Center(child:  CircularProgressIndicator(),) :  SingleChildScrollView(
-        child: Column(
-          children: [
-            
-            Container(
-                padding: const  EdgeInsets.symmetric(horizontal: 10),
-                child:  Search_Bar()),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 20),
-              child: SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: CatModList.length,
-                    itemBuilder: ((context, index) => CatBlock(
-                          categoryImgSrc: CatModList[index].catImgUrl,
-                          categoryName: CatModList[index].catName,
-                        ))),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              height: 700,
-              child: RefreshIndicator(
-                onRefresh: () async {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()));
-                },
-                child: GridView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: 400,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 13,
-                        mainAxisSpacing: 10),
-                    itemCount: trendingWallList.length,
-                    itemBuilder: ((context, index) => GridTile(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => FullScreen(
-                                          imgUrl:
-                                              trendingWallList[index].imgSrc)));
-                            },
-                            child: Hero(
-                              tag: trendingWallList[index].imgSrc,
-                              child: Container(
-                                height: 800,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                    color: Colors.amberAccent,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.network(
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Search_Bar()),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    child: SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: CatModList.length,
+                          itemBuilder: ((context, index) => CatBlock(
+                                categoryImgSrc: CatModList[index].catImgUrl,
+                                categoryName: CatModList[index].catName,
+                              ))),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    height: 700,
+                    child: RefreshIndicator(
+                      onRefresh: () async {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      },
+                      child: GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 400,
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 13,
+                                  mainAxisSpacing: 10),
+                          itemCount: trendingWallList.length,
+                          itemBuilder: ((context, index) => GridTile(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => FullScreen(
+                                                imgUrl: trendingWallList[index]
+                                                    .imgSrc)));
+                                  },
+                                  child: Hero(
+                                    tag: trendingWallList[index].imgSrc,
+                                    child: Container(
                                       height: 800,
                                       width: 50,
-                                      fit: BoxFit.cover,
-                                      trendingWallList[index].imgSrc),
+                                      decoration: BoxDecoration(
+                                          color: Colors.amberAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.network(
+                                            height: 800,
+                                            width: 50,
+                                            fit: BoxFit.cover,
+                                            trendingWallList[index].imgSrc),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ))),
+                              ))),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

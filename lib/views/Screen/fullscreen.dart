@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:open_file/open_file.dart';
 
 import 'package:image_downloader/image_downloader.dart';
-
 
 class FullScreen extends StatelessWidget {
   String imgUrl;

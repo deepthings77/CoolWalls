@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_new/views/Screen/search.dart';
 
-
 class Search_Bar extends StatelessWidget {
   Search_Bar({super.key});
 
@@ -10,7 +9,7 @@ class Search_Bar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding:  EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             color: const Color.fromARGB(66, 80, 80, 80),
             border: Border.all(color: const Color.fromARGB(32, 0, 0, 0)),

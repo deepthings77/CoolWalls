@@ -1,4 +1,3 @@
-
 class CategoryModel {
   String catName;
   String catImgUrl;

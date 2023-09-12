@@ -1,12 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:my_new/controller/apiOper.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
 import 'package:my_new/views/widgets/searchBar.dart';
-
 
 class SearchScreen extends StatefulWidget {
   String query;
@@ -39,6 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -47,59 +45,65 @@ class _SearchScreenState extends State<SearchScreen> {
           word2: "Walls",
         ),
       ),
-      body: isLoading ? Center(child: CircularProgressIndicator(),)  : SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Search_Bar()),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                  physics: BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 400,
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 13,
-                      mainAxisSpacing: 10),
-                  itemCount: searchResults.length,
-                  itemBuilder: ((context, index) => GridTile(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => FullScreen(
-                                        imgUrl: searchResults[index].imgSrc)));
-                          },
-                          child: Hero(
-                            tag: searchResults[index].imgSrc,
-                            child: Container(
-                              height: 800,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.amberAccent,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.network(
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Search_Bar()),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    height: MediaQuery.of(context).size.height,
+                    child: GridView.builder(
+                        physics: BouncingScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: 400,
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 13,
+                            mainAxisSpacing: 10),
+                        itemCount: searchResults.length,
+                        itemBuilder: ((context, index) => GridTile(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => FullScreen(
+                                              imgUrl: searchResults[index]
+                                                  .imgSrc)));
+                                },
+                                child: Hero(
+                                  tag: searchResults[index].imgSrc,
+                                  child: Container(
                                     height: 800,
                                     width: 50,
-                                    fit: BoxFit.cover,
-                                    searchResults[index].imgSrc),
+                                    decoration: BoxDecoration(
+                                        color: Colors.amberAccent,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.network(
+                                          height: 800,
+                                          width: 50,
+                                          fit: BoxFit.cover,
+                                          searchResults[index].imgSrc),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ))),
-            )
-          ],
-        ),
-      ),
+                            ))),
+                  )
+                ],
+              ),
+            ),
     );
   }
 }

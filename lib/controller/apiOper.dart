@@ -1,6 +1,3 @@
-
-
-
 import 'dart:math';
 
 import 'package:http/http.dart' as http;
@@ -17,8 +14,10 @@ class ApiOperations {
   static String _apiKey =
       "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg";
   static Future<List<PhotosModel>> getTrendingWallpapers() async {
-    await http.get(Uri.parse("https://api.pexels.com/v1/curated"),
-        headers: {"Authorization": "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg"}).then((value) {
+    await http.get(Uri.parse("https://api.pexels.com/v1/curated"), headers: {
+      "Authorization":
+          "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg"
+    }).then((value) {
       print("RESPONSE REPORT");
       print(value.body);
       Map<String, dynamic> jsonData = jsonDecode(value.body);
@@ -35,7 +34,10 @@ class ApiOperations {
     await http.get(
         Uri.parse(
             "https://api.pexels.com/v1/search?query=$query&per_page=30&page=1"),
-        headers: {"Authorization": "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg"}).then((value) {
+        headers: {
+          "Authorization":
+              "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg"
+        }).then((value) {
       Map<String, dynamic> jsonData = jsonDecode(value.body);
       List photos = jsonData['photos'];
       searchWallpapersList.clear();
