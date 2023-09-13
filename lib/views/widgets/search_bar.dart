@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_new/views/Screen/search.dart';
 
-class Search_Bar extends StatelessWidget {
-  Search_Bar({super.key});
+class SearchBarThing extends StatelessWidget {
+  SearchBarThing({super.key});
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             color: const Color.fromARGB(66, 80, 80, 80),
             border: Border.all(color: const Color.fromARGB(32, 0, 0, 0)),

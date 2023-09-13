@@ -7,11 +7,11 @@ import 'package:image_downloader/image_downloader.dart';
 class FullScreen extends StatelessWidget {
   String imgUrl;
   FullScreen({super.key, required this.imgUrl});
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
   Future<void> setWallpaperFromFile(
       String wallpaperUrl, BuildContext context) async {
     ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Downloading Started...")));
+        .showSnackBar(const SnackBar(content: Text("Downloading Started...")));
     try {
       // Saved with this method.
       var imageId = await ImageDownloader.downloadImage(wallpaperUrl);
@@ -19,10 +19,10 @@ class FullScreen extends StatelessWidget {
         return;
       }
       // Below is a method of obtaining saved image information.
-      var fileName = await ImageDownloader.findName(imageId);
+      // var fileName = await ImageDownloader.findName(imageId);
       var path = await ImageDownloader.findPath(imageId);
-      var size = await ImageDownloader.findByteSize(imageId);
-      var mimeType = await ImageDownloader.findMimeType(imageId);
+      // var size = await ImageDownloader.findByteSize(imageId);
+      // var mimeType = await ImageDownloader.findMimeType(imageId);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text("Downloaded Sucessfully"),
         action: SnackBarAction(
@@ -31,7 +31,7 @@ class FullScreen extends StatelessWidget {
               OpenFile.open(path);
             }),
       ));
-      print("IMAGE DOWNLOADED");
+      // print("IMAGE DOWNLOADED");
     } on PlatformException catch (error) {
       print(error);
       ScaffoldMessenger.of(context)
@@ -47,7 +47,7 @@ class FullScreen extends StatelessWidget {
           onPressed: () async {
             await setWallpaperFromFile(imgUrl, context);
           },
-          child: const Text("Set Wallpaper")),
+          child: const Text("Download")),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Container(
         height: MediaQuery.of(context).size.height,

@@ -18,7 +18,7 @@ class CatBlock extends StatelessWidget {
                     catImgUrl: categoryImgSrc, catName: categoryName)));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 7),
+        margin: const EdgeInsets.symmetric(horizontal: 7),
         child: Stack(
           children: [
             ClipRRect(
@@ -38,7 +38,7 @@ class CatBlock extends StatelessWidget {
                 top: 15,
                 child: Text(
                   categoryName,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w600),
                 ))
           ],

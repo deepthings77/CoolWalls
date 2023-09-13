@@ -11,15 +11,15 @@ class ApiOperations {
   static List<PhotosModel> searchWallpapersList = [];
   static List<CategoryModel> cateogryModelList = [];
 
-  static String _apiKey =
-      "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg";
+  // static String _apiKey =
+  //     "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg";
   static Future<List<PhotosModel>> getTrendingWallpapers() async {
     await http.get(Uri.parse("https://api.pexels.com/v1/curated"), headers: {
       "Authorization":
           "VbW5Mp2PnhfPHZ5tZcSflV1GwgvrVdXKIwYofnV3lhEeN63PxqcsGzfg"
     }).then((value) {
-      print("RESPONSE REPORT");
-      print(value.body);
+      // print("RESPONSE REPORT");
+      // print(value.body);
       Map<String, dynamic> jsonData = jsonDecode(value.body);
       List photos = jsonData['photos'];
       photos.forEach((element) {
@@ -51,21 +51,21 @@ class ApiOperations {
 
   static List<CategoryModel> getCategoriesList() {
     List cateogryName = [
-      "Cars",
-      "Nature",
-      "Bikes",
-      "Street",
-      "City",
-      "Flowers"
+      "Krishna",
+      "Shiva",
+      "Temple",
+      "Quotes",
+      "Forest",
+      "Motivation"
     ];
     cateogryModelList.clear();
     cateogryName.forEach((catName) async {
-      final _random = new Random();
+      final random_ = Random();
 
       PhotosModel photoModel =
-          (await searchWallpapers(catName))[0 + _random.nextInt(11 - 0)];
-      print("IMG SRC IS HERE");
-      print(photoModel.imgSrc);
+          (await searchWallpapers(catName))[0 + random_.nextInt(11 - 0)];
+      // print("IMG SRC IS HERE");
+      // print(photoModel.imgSrc);
       cateogryModelList
           .add(CategoryModel(catImgUrl: photoModel.imgSrc, catName: catName));
     });

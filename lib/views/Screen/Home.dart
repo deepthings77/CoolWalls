@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
-import 'package:my_new/controller/apiOper.dart';
+import 'package:my_new/controller/api_oper.dart';
 import 'package:my_new/model/categoryModel.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/catBlock.dart';
-import 'package:my_new/views/widgets/searchBar.dart';
+import 'package:my_new/views/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
 
   GetCatDetails() async {
-    CatModList = await ApiOperations.getCategoriesList();
-    print("GETTTING CAT MOD LIST");
-    print(CatModList);
+    CatModList =  ApiOperations.getCategoriesList();
+    // print("GETTTING CAT MOD LIST");
+    // print(CatModList);
     setState(() {
       CatModList = CatModList;
     });
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Search_Bar()),
+                      child: SearchBarThing()),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 20),
                     child: SizedBox(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_new/controller/apiOper.dart';
+import 'package:my_new/controller/api_oper.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
-import 'package:my_new/views/widgets/searchBar.dart';
+import 'package:my_new/views/widgets/search_bar.dart';
 
 class SearchScreen extends StatefulWidget {
   String query;
@@ -26,7 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     GetSearchResults();
   }
@@ -36,7 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: BackButton(color: Colors.black),
+        leading: const BackButton(color: Colors.black),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -46,24 +46,24 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Search_Bar()),
-                  SizedBox(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: SearchBarThing()),
+                 const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     height: MediaQuery.of(context).size.height,
                     child: GridView.builder(
-                        physics: BouncingScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        physics: const BouncingScrollPhysics(),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             mainAxisExtent: 400,
                             crossAxisCount: 2,
                             crossAxisSpacing: 13,

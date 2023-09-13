@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_new/controller/apiOper.dart';
+import 'package:my_new/controller/api_oper.dart';
 import 'package:my_new/model/photosModel.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
 import 'package:my_new/views/widgets/customAppBar.dart';
@@ -36,7 +36,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: BackButton(color: Colors.black),
+        leading: const BackButton(color: Colors.black),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -46,8 +46,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
       body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
+          ? const Center(
+              child:  CircularProgressIndicator(),
             )
           : SingleChildScrollView(
               child: Column(

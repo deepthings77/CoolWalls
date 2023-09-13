@@ -1,12 +1,12 @@
 class PhotosModel {
   String imgSrc;
-  String PhotoName;
+  String photoname;
 
-  PhotosModel({required this.PhotoName, required this.imgSrc});
+  PhotosModel({required this.photoname, required this.imgSrc});
 
   static PhotosModel fromAPI2App(Map<String, dynamic> photoMap) {
     return PhotosModel(
-        PhotoName: photoMap["photographer"],
+        photoname: photoMap["photographer"],
         imgSrc: (photoMap["src"])["portrait"]);
   }
 }
