@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_new/views/Screen/category.dart';
 
 class CatBlock extends StatelessWidget {
-  String categoryName;
-  String categoryImgSrc;
-  CatBlock(
+ final String categoryName;
+ final String categoryImgSrc;
+ const CatBlock(
       {super.key, required this.categoryImgSrc, required this.categoryName});
 
   @override

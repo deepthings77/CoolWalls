@@ -5,7 +5,7 @@ import 'package:open_file/open_file.dart';
 import 'package:image_downloader/image_downloader.dart';
 
 class FullScreen extends StatelessWidget {
-  String imgUrl;
+  final  String imgUrl;
   FullScreen({super.key, required this.imgUrl});
   final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
   Future<void> setWallpaperFromFile(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_new/controller/api_oper.dart';
-import 'package:my_new/model/photosModel.dart';
+import 'package:my_new/model/photos_model.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
-import 'package:my_new/views/widgets/customAppBar.dart';
+import 'package:my_new/views/widgets/custom_app_bar.dart';
 
 class CategoryScreen extends StatefulWidget {
-  String catName;
-  String catImgUrl;
+ final String catName;
+ final String catImgUrl;
 
-  CategoryScreen({super.key, required this.catImgUrl, required this.catName});
+ const CategoryScreen({super.key, required this.catImgUrl, required this.catName});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -17,7 +17,7 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   late List<PhotosModel> categoryResults;
   bool isLoading = true;
-  GetCatRelWall() async {
+  getcatrelwall() async {
     categoryResults = await ApiOperations.searchWallpapers(widget.catName);
 
     setState(() {
@@ -27,7 +27,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   void initState() {
-    GetCatRelWall();
+    getcatrelwall();
     super.initState();
   }
 
@@ -40,7 +40,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
-        title: CustomAppBar(
+        title: const CustomAppBar(
           word1: "Cool",
           word2: "Walls",
         ),

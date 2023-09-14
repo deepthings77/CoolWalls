@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:my_new/model/categoryModel.dart';
-import 'package:my_new/model/photosModel.dart';
+import 'package:my_new/model/category_model.dart';
+import 'package:my_new/model/photos_model.dart';
 
 class ApiOperations {
   static List<PhotosModel> trendingWallpapers = [];
@@ -73,3 +73,6 @@ class ApiOperations {
     return cateogryModelList;
   }
 }
+
+
+

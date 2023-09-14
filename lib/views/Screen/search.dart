@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_new/controller/api_oper.dart';
-import 'package:my_new/model/photosModel.dart';
+import 'package:my_new/model/photos_model.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
-import 'package:my_new/views/widgets/customAppBar.dart';
+import 'package:my_new/views/widgets/custom_app_bar.dart';
 import 'package:my_new/views/widgets/search_bar.dart';
 
 class SearchScreen extends StatefulWidget {
-  String query;
-  SearchScreen({super.key, required this.query});
+ final String query;
+ const SearchScreen({super.key, required this.query});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -16,7 +16,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   late List<PhotosModel> searchResults;
   bool isLoading = true;
-  GetSearchResults() async {
+  getsearchresults() async {
     searchResults = await ApiOperations.searchWallpapers(widget.query);
 
     setState(() {
@@ -28,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     
     super.initState();
-    GetSearchResults();
+    getsearchresults();
   }
 
   @override
@@ -40,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
-        title: CustomAppBar(
+        title: const CustomAppBar(
           word1: "Cool",
           word2: "Walls",
         ),

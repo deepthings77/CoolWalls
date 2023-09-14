@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_new/views/widgets/customAppBar.dart';
+import 'package:my_new/views/widgets/custom_app_bar.dart';
 import 'package:my_new/controller/api_oper.dart';
-import 'package:my_new/model/categoryModel.dart';
-import 'package:my_new/model/photosModel.dart';
+import 'package:my_new/model/category_model.dart';
+import 'package:my_new/model/photos_model.dart';
 import 'package:my_new/views/Screen/fullscreen.dart';
-import 'package:my_new/views/widgets/catBlock.dart';
+import 'package:my_new/views/widgets/cat_block.dart';
 import 'package:my_new/views/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,19 +16,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late List<PhotosModel> trendingWallList;
-  late List<CategoryModel> CatModList;
+  late List<CategoryModel> catmodlist;
   bool isLoading = true;
 
-  GetCatDetails() async {
-    CatModList =  ApiOperations.getCategoriesList();
+  getcatdetails() async {
+    catmodlist =  ApiOperations.getCategoriesList();
     // print("GETTTING CAT MOD LIST");
     // print(CatModList);
     setState(() {
-      CatModList = CatModList;
+      catmodlist = catmodlist;
     });
   }
+  
 
-  GetTrendingWallpapers() async {
+
+  gettrendingwllpapers() async {
     trendingWallList = await ApiOperations.getTrendingWallpapers();
 
     setState(() {
@@ -39,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    GetCatDetails();
-    GetTrendingWallpapers();
+    getcatdetails();
+    gettrendingwllpapers();
   }
 
   @override
@@ -51,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
-        title: CustomAppBar(
+        title: const CustomAppBar(
           word1: "Cool",
           word2: "Walls",
         ),
@@ -73,10 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: CatModList.length,
+                          itemCount: catmodlist.length,
                           itemBuilder: ((context, index) => CatBlock(
-                                categoryImgSrc: CatModList[index].catImgUrl,
-                                categoryName: CatModList[index].catName,
+                                categoryImgSrc: catmodlist[index].catImgUrl,
+                                categoryName: catmodlist[index].catName,
                               ))),
                     ),
                   ),
@@ -138,3 +140,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
